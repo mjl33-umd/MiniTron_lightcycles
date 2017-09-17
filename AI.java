@@ -45,21 +45,21 @@ public class AI extends Cycle{
 
 		int look = 5;
 
-		Rectangle tester = new Rectangle(cyc.x + ( -1 * 7 * xDirection),cyc.y + (-1* 7 * yDirection),cyc.width,cyc.height);
-		Rectangle wallRec = new Rectangle(cyc.x + (look * xDirection),cyc.y + (look * yDirection),cyc.width,cyc.height);
+		Rectangle tester = new Rectangle(cyc.x + ( -1 * 7 * xDirection),cyc.y + (-1* 7 * yDirection),cyc.width,cyc.height);//makes sure AI doesn't detect its immediate trail as a collision
+		Rectangle wallRec = new Rectangle(cyc.x + (look * xDirection),cyc.y + (look * yDirection),cyc.width,cyc.height);//makes a ghost cycle that detects collision ahead
 
 		if(!Grid.getWallBounds(wallRec)){
 			return true;
 		}
 
-		for(int ai = 0; ai<AItrail.size(); ai++)
+		for(int ai = 0; ai<AItrail.size(); ai++)//check if AI is approaching AI light trail
 		{
 			if(wallRec.intersects(AItrail.get(ai).getRec()) && !tester.intersects(AItrail.get(ai).getRec())){
 				return true;
 			}
 		}
 
-		for(int pl = 0; pl<PLT.size(); pl++)
+		for(int pl = 0; pl<PLT.size(); pl++)//checks if AI is approaching player's light trail
 		{
 			if(wallRec.intersects(PLT.get(pl).getRec())){
 				return true;
@@ -82,7 +82,7 @@ public class AI extends Cycle{
 			checker1 = new Rectangle(cyc.x + (-1 * yDirection * searcher),cyc.y + (-1 * xDirection * searcher),cyc.width,cyc.height);
 			checker2 = new Rectangle(cyc.x + (yDirection * searcher),cyc.y + (xDirection * searcher),cyc.width,cyc.height);
 			
-			if(checkDirection(checker1) || checkDirection(checker2)){
+			if(checkDirection(checker1) || checkDirection(checker2)){//above rectangles look left and right of AI to look for space to turn
 				if(checkDirection(checker1) && checkDirection(checker2) && (lightTrail.size() > 2)){//greater than two fixes bug when AI is in the middle of screen with open walls
 					Window.stopGame(Window.mode.getOtherC(this));
 				}
@@ -103,13 +103,13 @@ public class AI extends Cycle{
 			endCheck = true;
 		}
 
-		for(int l = 0; l<lightTrail.size(); l++){
+		for(int l = 0; l<lightTrail.size(); l++){//ends the checking for a light trail to see which direction AI should turn
 			if(check.intersects(lightTrail.get(l).getRec())){
 				endCheck = true;
 			}
 		}
 
-		for(int ol = 0; ol<Window.mode.getOtherC(this).lightTrail.size();ol++){
+		for(int ol = 0; ol<Window.mode.getOtherC(this).lightTrail.size();ol++){//ends the checking for a light trail to see which direction AI should turnends the checking for a light trail to see which direction AI should turn
 			if(check.intersects(Window.mode.getOtherC(this).lightTrail.get(ol).getRec()) ){
 				endCheck = true;
 			}
