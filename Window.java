@@ -14,15 +14,15 @@ public class Window implements keyable{
 	
 	protected void HandleWindow(Graphics g){
 		
-		if(gameStarted){
+		if(gameStarted){//Draws grid and starts drawing cycles
 			grid.draw(g);
 			(mode.getC1()).draw(g);
 			(mode.getC2()).draw(g);
 		}
-		else if(gameEnded){
+		else if(gameEnded){//Draws ending display
 			end.draw(g);
 		}
-		else{
+		else{//Draws menu
 			menu.draw(g);
 		}
 		
@@ -31,7 +31,7 @@ public class Window implements keyable{
 	@Override
 	public void keyPressed(KeyEvent e) {//master key handler
 		
-		if(!gameStarted && !gameEnded)
+		if(!gameStarted && !gameEnded)//If game not started user can access menu
 		{
 			if(e.getKeyCode() == e.VK_ENTER){
 				mode = menu.getMode();
@@ -39,7 +39,7 @@ public class Window implements keyable{
 			}
 			menu.keyPressed(e);
 		}
-		else if(gameStarted)
+		else if(gameStarted)//keyboard can access movement to certain cycles depending on what mode was selected
 		{
 			if(mode.getGameType().equals("One Player")){
 				((keyable) mode.getC1()).keyPressed(e);
