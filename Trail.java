@@ -3,7 +3,7 @@ import java.awt.Graphics;
 import java.awt.Rectangle;
 
 
-public class Trail implements drawable{
+public class Trail implements drawable{//These are the objects stored in light trail arraylists
 
 	private int tx, ty;
 	private int twid = 13, thgt = 13;
