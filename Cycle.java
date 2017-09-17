@@ -1,4 +1,4 @@
-import java.awt.Graphics;
+//import java.awt.Graphics;
 import java.awt.Rectangle;
 import java.util.ArrayList;
 
@@ -36,7 +36,7 @@ public abstract class Cycle implements Runnable{
 			while(true)
 			{		
 				move();
-				checkCollision(lightTrail,Window.mode.getOtherC(this).lightTrail);
+				checkCollision(lightTrail,Window.mode.getOtherC(this).lightTrail);//Inputs current cycle and other cycle for check collision method
 				Thread.sleep(8);
 			}
 
@@ -73,20 +73,20 @@ public abstract class Cycle implements Runnable{
 	{
 		boolean stop = false;
 		
-		if(!Grid.getWallBounds(cyc)){
+		if(!Grid.getWallBounds(cyc)){//checks to see if cycle runs into wall
 			stop = true;
 		}
 		
 		Rectangle tester = new Rectangle(cyc.x + ( -1 * 7 * xDirection),cyc.y + (-1* 7 * yDirection),cyc.width,cyc.height);//7 is then removed for testing behind
 		
-		for(int one = 0; one<LT1.size(); one++)
+		for(int one = 0; one<LT1.size(); one++)//checks if cycle runs into player ones's light trail
 		{
 			if(cyc.intersects(LT1.get(one).getRec()) && !tester.intersects(LT1.get(one).getRec())){
 				stop = true;
 			}
 		}
 		
-		for(int two = 0; two<LT2.size(); two++)
+		for(int two = 0; two<LT2.size(); two++)//checks if cycle runs into player two trail
 		{
 			if(cyc.intersects(LT2.get(two).getRec())){
 				stop = true;
