@@ -65,7 +65,7 @@ public class Menu implements drawable, keyable{
 	{
 		Cycle p1, p2, ai;
 
-		switch(menuTicker)
+		switch(menuTicker)//These are the game options from the menu
 		{
 		case 1:
 			p1 = new PlayerOne(525,800);
