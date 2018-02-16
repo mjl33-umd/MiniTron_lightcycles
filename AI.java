@@ -3,8 +3,6 @@ import java.awt.Graphics;
 import java.awt.Rectangle;
 import java.util.ArrayList;
 
-// Michael Lindsey
-
 public class AI extends Cycle{
 
 	private static Color wheel = CustomColor.ModGray;
