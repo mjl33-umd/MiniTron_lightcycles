@@ -8,7 +8,7 @@ My version of the original Tron light cycles arcade game
 
 Playing Game:
 
-1.) Download TronRunner.jar
+1.) Download TronRunner.jar  
 2.) From Command Line run: java -jar TronRunner.jar
 
 Controls:
