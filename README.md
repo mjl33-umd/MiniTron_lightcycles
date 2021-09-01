@@ -1,7 +1,5 @@
 # MiniTron_lightcycles
 
-Michael Lindsey
-
 Project Development: 2016-2017
 
 My version of the original Tron light cycles arcade game
